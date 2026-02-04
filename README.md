@@ -27,3 +27,68 @@ If the answer is not present in the PDF, the system responds with:
 ---
 
 ## Architecture
+PDF Document
+↓
+Text Extraction
+↓
+Chunking (overlapping)
+↓
+Embeddings
+↓
+Vector Store (FAISS)
+↓
+Top-K Retrieval
+↓
+LLM Answer (Context-only)
+
+
+---
+
+## Features
+- Upload and process PDF documents
+- Ask natural language questions about the document
+- Context-aware answers grounded in document text
+- Local execution (no API keys, no paid services)
+- Hallucination-resistant by design
+- Modular, extensible architecture
+
+---
+
+## Tech Stack
+- Python
+- Streamlit (UI)
+- Ollama (`llama3.2:3b`) — Local LLM
+- SentenceTransformers — Embeddings
+- FAISS — Vector similarity search
+- PDFPlumber / PyPDF — PDF text extraction
+
+---
+
+## Repository Structure
+
+ask-your-pdf/
+├── app.py # Streamlit UI
+├── pdf_loader.py # PDF text extraction
+├── chunker.py # Text chunking logic
+├── embedder.py # Embedding generation
+├── retriever.py # Vector search
+├── llm_answerer.py # Context-grounded answering
+├── requirements.txt
+└── README.md
+
+
+---
+
+## How It Works
+1. User uploads a PDF file
+2. Text is extracted from the document
+3. Text is split into overlapping chunks
+4. Each chunk is converted into an embedding
+5. Embeddings are stored in a FAISS vector index
+6. User question is embedded
+7. Most relevant chunks are retrieved
+8. Retrieved chunks + question are sent to the LLM
+9. LLM answers **only using the provided context**
+
+---
+
