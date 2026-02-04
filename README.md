@@ -57,7 +57,7 @@ LLM Answer (Context-only)
 ## Tech Stack
 - Python
 - Streamlit (UI)
-- Ollama (`llama3.2:3b`) — Local LLM
+- Ollama (`llama3.2:3b`) — Local LLM or any small llm
 - SentenceTransformers — Embeddings
 - FAISS — Vector similarity search
 - PDFPlumber / PyPDF — PDF text extraction
